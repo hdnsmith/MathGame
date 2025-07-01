@@ -22,29 +22,21 @@ class Program
             switch (menuSelection)
             {
                 case "1":
-                    Console.WriteLine("Addition Game coming soon. Press enter to continue.");
-                    Console.ReadLine();
-                    // PlayAddition();
+                    GameEngine.PlayAddition();
                     break;
                 case "2":
-                    Console.WriteLine("Subtraction Game coming soon. Press enter to continue.");
-                    Console.ReadLine();
-                    // PlaySubtraction();
+                    GameEngine.PlaySubtraction();
                     break;
                 case "3":
-                    Console.WriteLine("Multiply Game coming soon. Press enter to continue.");
-                    Console.ReadLine();
-                    // PlayMultiplication();
+                    GameEngine.PlayMultiplication();
                     break;
                 case "4":
-                    Console.WriteLine("Divide Game coming soon. Press enter to continue.");
-                    Console.ReadLine();
-                    // PlayDivision();
+                    GameEngine.PlayDivision();
                     break;
                 case "5":
-                    Console.WriteLine("Previous Game coming soon. Press enter to continue.");
+                    Console.WriteLine("Display Previous Games option coming soon. Press enter to continue.");
                     Console.ReadLine();
-                    // DisplayPreviousGames
+                    // DisplayPreviousGames()
                     break;
             }
         }
