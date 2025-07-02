@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MathGame;
+﻿namespace MathGame;
 
 class Program
 {
