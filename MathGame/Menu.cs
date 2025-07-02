@@ -52,6 +52,8 @@ internal class Menu
         int score;
         switch (MenuSelection)
         {
+            /*TODO: See if we can find a more OOP way of choosing the operation for RecordGame() method. Or at least
+                    a more elegant way of doing it that doesn't require hard coding the char. */
             case 1:
                 score = game.PlayAddition();
                 RecordGame('+', score);
@@ -61,7 +63,8 @@ internal class Menu
                 RecordGame('-', score);
                 break;
             case 3:
-                GameEngine.PlayMultiplication();
+                score= game.PlayMultiplication();
+                RecordGame('*', score);
                 break;
             case 4:
                 GameEngine.PlayDivision();

@@ -34,6 +34,7 @@ internal class GameEngine
     
     private int Operand2 { get; set; }
 
+    //TODO: Merge all Play methods into one method.
     internal int PlayAddition()
     {
         Operation = '+';
@@ -72,7 +73,7 @@ internal class GameEngine
             Console.Clear();
             GetOperands();
             SetCorrectAnswer();
-            Console.WriteLine($"{Operand1} - {Operand2}");
+            DisplayEquation();
             GetUserAnswer();
             if (IsUserAnswerCorrect())
             {
@@ -92,10 +93,33 @@ internal class GameEngine
         return Score;
     }
     
-    internal static void PlayMultiplication()
+    internal int PlayMultiplication()
     {
-        Console.WriteLine("Multiplication Game coming soon. Press enter to continue.");
+        Operation = '*';
+        Score = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Clear();
+            GetOperands();
+            SetCorrectAnswer();
+            DisplayEquation();
+            GetUserAnswer();
+            if (IsUserAnswerCorrect())
+            {
+                Console.WriteLine("Correct! Press enter to continue.");
+                Score++;
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"Sorry, the correct answer was {CorrectAnswer}. Press enter to continue.");
+                Console.ReadLine();
+            }
+        }
+        Console.Clear();
+        Console.Write($"Your final score was {Score}. Press enter to return to menu.");
         Console.ReadLine();
+        return Score;
     }
     
     internal static void PlayDivision()
