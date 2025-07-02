@@ -63,11 +63,12 @@ internal class Menu
                 RecordGame('-', score);
                 break;
             case 3:
-                score= game.PlayMultiplication();
+                score = game.PlayMultiplication();
                 RecordGame('*', score);
                 break;
             case 4:
-                GameEngine.PlayDivision();
+                score = game.PlayDivision();
+                RecordGame('/', score);
                 break;
             case 5:
                 DisplayGameHistory();

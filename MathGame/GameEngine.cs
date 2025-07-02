@@ -33,7 +33,7 @@ internal class GameEngine
     private int Operand1 { get; set; }
     
     private int Operand2 { get; set; }
-
+    
     //TODO: Merge all Play methods into one method.
     internal int PlayAddition()
     {
@@ -122,17 +122,57 @@ internal class GameEngine
         return Score;
     }
     
-    internal static void PlayDivision()
+    internal int PlayDivision()
     {
-        Console.WriteLine("Division Game coming soon. Press enter to continue.");
+        Operation = '/';
+        Score = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Clear();
+            GetOperands();
+            SetCorrectAnswer();
+            DisplayEquation();
+            GetUserAnswer();
+            if (IsUserAnswerCorrect())
+            {
+                Console.WriteLine("Correct! Press enter to continue.");
+                Score++;
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"Sorry, the correct answer was {CorrectAnswer}. Press enter to continue.");
+                Console.ReadLine();
+            }
+        }
+        Console.Clear();
+        Console.Write($"Your final score was {Score}. Press enter to return to menu.");
         Console.ReadLine();
+        return Score;
     }
-
+    
+    //TODO: Modify gameplay so that operands are only 1-20.
+    //      Also modify subtraction so that it never asks for a negative answer.
     private void GetOperands()
     {
         Random random = new Random();
-        Operand1 = random.Next(1, 101);
-        Operand2 = random.Next(1, 101);
+        switch (Operation)
+        {
+            case '+':
+            case '-':
+            case '*':
+                Operand1 = random.Next(1, 101);
+                Operand2 = random.Next(1, 101);
+                break;
+            case '/':
+                do
+                {
+                    Operand1 = random.Next(1, 101);
+                    Operand2 = random.Next(1, 101);
+                } while (Operand1 % Operand2 != 0);
+                break;
+        }
+
     }
 
     private void SetCorrectAnswer()
