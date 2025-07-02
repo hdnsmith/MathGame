@@ -150,25 +150,31 @@ internal class GameEngine
         Console.ReadLine();
         return Score;
     }
-    
-    //TODO: Modify gameplay so that operands are only 1-20.
-    //      Also modify subtraction so that it never asks for a negative answer.
     private void GetOperands()
     {
         Random random = new Random();
         switch (Operation)
         {
             case '+':
-            case '-':
-            case '*':
                 Operand1 = random.Next(1, 101);
                 Operand2 = random.Next(1, 101);
                 break;
-            case '/':
+            case '-':
                 do
                 {
                     Operand1 = random.Next(1, 101);
                     Operand2 = random.Next(1, 101);
+                } while (Operand1 - Operand2 < 0);
+                break;
+            case '*':
+                Operand1 = random.Next(1, 12);
+                Operand2 = random.Next(1, 12);
+                break;
+            case '/':
+                do
+                {
+                    Operand1 = random.Next(1, 145);
+                    Operand2 = random.Next(1, 145);
                 } while (Operand1 % Operand2 != 0);
                 break;
         }
