@@ -52,23 +52,25 @@ internal class Menu
         int score;
         switch (MenuSelection)
         {
-            /*TODO: See if we can find a more OOP way of choosing the operation for RecordGame() method. Or at least
-                    a more elegant way of doing it that doesn't require hard coding the char. */
             case 1:
-                score = game.PlayAddition();
-                RecordGame('+', score);
+                game.Operation = '+';
+                score = game.PlayGame();
+                RecordGame(game.Operation, score);
                 break;
             case 2:
-                score = game.PlaySubtraction();
-                RecordGame('-', score);
+                game.Operation = '-';
+                score = game.PlayGame();
+                RecordGame(game.Operation, score);
                 break;
             case 3:
-                score = game.PlayMultiplication();
-                RecordGame('*', score);
+                game.Operation = '*';
+                score = game.PlayGame();
+                RecordGame(game.Operation, score);
                 break;
             case 4:
-                score = game.PlayDivision();
-                RecordGame('/', score);
+                game.Operation = '/';
+                score = game.PlayGame();
+                RecordGame(game.Operation, score);
                 break;
             case 5:
                 DisplayGameHistory();

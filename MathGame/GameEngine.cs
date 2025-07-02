@@ -5,7 +5,7 @@ namespace MathGame;
 internal class GameEngine
 {
     private char _operation;
-    private char Operation
+    internal char Operation
     {
         get => _operation;
         set
@@ -34,97 +34,8 @@ internal class GameEngine
     
     private int Operand2 { get; set; }
     
-    //TODO: Merge all Play methods into one method.
-    internal int PlayAddition()
+    internal int PlayGame()
     {
-        Operation = '+';
-        Score = 0;
-        for (int i = 0; i < 5; i++)
-        {
-            Console.Clear();
-            GetOperands();
-            SetCorrectAnswer();
-            DisplayEquation();
-            GetUserAnswer();
-            if (IsUserAnswerCorrect())
-            {
-                Console.WriteLine("Correct! Press enter to continue.");
-                Score++;
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine($"Sorry, the correct answer was {CorrectAnswer}. Press enter to continue.");
-                Console.ReadLine();
-            }
-        }
-        Console.Clear();
-        Console.Write($"Your final score was {Score}. Press enter to return to menu.");
-        Console.ReadLine();
-        return Score;
-    }
-    
-    internal int PlaySubtraction()
-    {
-        Operation = '-';
-        Score = 0;
-        for (int i = 0; i < 5; i++)
-        {
-            Console.Clear();
-            GetOperands();
-            SetCorrectAnswer();
-            DisplayEquation();
-            GetUserAnswer();
-            if (IsUserAnswerCorrect())
-            {
-                Console.WriteLine("Correct! Press enter to continue.");
-                Score++;
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine($"Sorry, the correct answer was {CorrectAnswer}. Press enter to continue.");
-                Console.ReadLine();
-            }
-        }
-        Console.Clear();
-        Console.Write($"Your final score was {Score}. Press enter to return to menu.");
-        Console.ReadLine();
-        return Score;
-    }
-    
-    internal int PlayMultiplication()
-    {
-        Operation = '*';
-        Score = 0;
-        for (int i = 0; i < 5; i++)
-        {
-            Console.Clear();
-            GetOperands();
-            SetCorrectAnswer();
-            DisplayEquation();
-            GetUserAnswer();
-            if (IsUserAnswerCorrect())
-            {
-                Console.WriteLine("Correct! Press enter to continue.");
-                Score++;
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine($"Sorry, the correct answer was {CorrectAnswer}. Press enter to continue.");
-                Console.ReadLine();
-            }
-        }
-        Console.Clear();
-        Console.Write($"Your final score was {Score}. Press enter to return to menu.");
-        Console.ReadLine();
-        return Score;
-    }
-    
-    internal int PlayDivision()
-    {
-        Operation = '/';
         Score = 0;
         for (int i = 0; i < 5; i++)
         {
