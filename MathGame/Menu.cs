@@ -44,10 +44,11 @@ internal class Menu
 
     internal void PlaySelection()
     {
+        GameEngine game = new GameEngine();
         switch (MenuSelection)
         {
             case 1:
-                GameEngine.PlayAddition();
+                game.PlayAddition();
                 break;
             case 2:
                 GameEngine.PlaySubtraction();
