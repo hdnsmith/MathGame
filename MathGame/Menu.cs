@@ -29,22 +29,22 @@ internal class Menu
         Console.WriteLine(
             "1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n5. View Previous Games\n6. Exit");
     }
-    internal static int GetMenuSelection()
+    internal void GetMenuSelection()
     {
         string? input = Console.ReadLine();
         if (int.TryParse(input, out int output))
         {
-            return output;
+            MenuSelection = output;
         }
         else
         {
-            return 0;
+            MenuSelection = 0;
         }
     }
 
     internal void PlaySelection()
     {
-        switch (_menuSelection)
+        switch (MenuSelection)
         {
             case 1:
                 GameEngine.PlayAddition();
@@ -62,6 +62,12 @@ internal class Menu
                 Console.WriteLine("Display Previous Games option coming soon. Press enter to continue.");
                 Console.ReadLine();
                 // DisplayPreviousGames()
+                break;
+            case 6:
+                break;
+            default:
+                Console.WriteLine("Invalid menu selection. Press enter to try again.");
+                Console.ReadLine();
                 break;
         }
     }
