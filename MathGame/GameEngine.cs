@@ -4,35 +4,30 @@ namespace MathGame;
 
 internal class GameEngine
 {
-    internal static void PlayAddition()
+    private int UserAnswer { get; set; }
+
+    private int CorrectAnswer { get; set; }
+    
+    private int Score { get; set; }
+    
+    private int Operand1 { get; set; }
+    
+    private int Operand2 { get; set; }
+
+    internal void PlayAddition()
     {
-        Random random = new Random();
-        int score = 0;
+        Score = 0;
         for (int i = 0; i < 5; i++)
         {
             Console.Clear();
-            
-            int num1 = random.Next(1, 101);
-            int num2 = random.Next(1, 101);
-            int correctAnswer = num1 + num2;
-            
-            Console.WriteLine($"{num1} + {num2}");
-            
-            int userAnswer = GetUserAnswer();
-            if (userAnswer == correctAnswer)
-            {
-                Console.WriteLine("Correct! Press enter to continue.");
-                score++;
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine($"Sorry, the correct answer was {correctAnswer}. Press enter to continue.");
-                Console.ReadLine();
-            }
+            GetOperands();
+            SetCorrectAnswer('+');
+            Console.WriteLine($"{Operand1} + {Operand2}");
+            GetUserAnswer();
+            IsUserAnswerCorrect();
         }
         Console.Clear();
-        Console.Write($"Your final score was {score}. Press enter to return to menu.");
+        Console.Write($"Your final score was {Score}. Press enter to return to menu.");
         Console.ReadLine();
     }
     
@@ -54,17 +49,57 @@ internal class GameEngine
         Console.ReadLine();
     }
 
-    private static int GetUserAnswer()
+    private void GetOperands()
+    {
+        Random random = new Random();
+        Operand1 = random.Next(1, 101);
+        Operand2 = random.Next(1, 101);
+    }
+
+    private void SetCorrectAnswer(char operation)
+    {
+        switch (operation)
+        {
+            case '+':
+                CorrectAnswer = Operand1 + Operand2;
+                break;
+            case '-':
+                CorrectAnswer = Operand1 - Operand2;
+                break;
+            case '*':
+                CorrectAnswer = Operand1 * Operand2;
+                break;
+            case '/':
+                CorrectAnswer = Operand1 / Operand2;
+                break;
+            default:
+                throw new ArgumentException("Argument Exception: Operation is invalid.");
+        }
+    }
+
+    private void GetUserAnswer()
     {
         string? input;
-        int userAnswer;
-        
+        int output;
         do
         {
             input = Console.ReadLine();
-        } while (!int.TryParse(input, out userAnswer));
-        
-        return userAnswer;
+        } while (!int.TryParse(input, out output));
+        UserAnswer = output;
+    }
 
+    private void IsUserAnswerCorrect()
+    {
+        if (UserAnswer == CorrectAnswer)
+        {
+            Console.WriteLine("Correct! Press enter to continue.");
+            Score++;
+            Console.ReadLine();
+        }
+        else
+        {
+            Console.WriteLine($"Sorry, the correct answer was {CorrectAnswer}. Press enter to continue.");
+            Console.ReadLine();
+        }
     }
 }
