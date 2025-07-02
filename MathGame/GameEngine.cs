@@ -67,8 +67,8 @@ internal class GameEngine
         switch (Operation)
         {
             case '+':
-                Operand1 = random.Next(1, 101);
-                Operand2 = random.Next(1, 101);
+                Operand1 = random.Next(1, 51);
+                Operand2 = random.Next(1, 51);
                 break;
             case '-':
                 do
@@ -78,8 +78,8 @@ internal class GameEngine
                 } while (Operand1 - Operand2 < 0);
                 break;
             case '*':
-                Operand1 = random.Next(1, 12);
-                Operand2 = random.Next(1, 12);
+                Operand1 = random.Next(1, 13);
+                Operand2 = random.Next(1, 13);
                 break;
             case '/':
                 do
@@ -89,7 +89,6 @@ internal class GameEngine
                 } while (Operand1 % Operand2 != 0);
                 break;
         }
-
     }
 
     private void SetCorrectAnswer()
