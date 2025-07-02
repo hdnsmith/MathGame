@@ -4,7 +4,25 @@ namespace MathGame;
 
 internal class GameEngine
 {
-    private char Operation { get; set; }
+    private char _operation;
+    private char Operation
+    {
+        get => _operation;
+        set
+        {
+            switch (value)
+            {
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                    _operation = value;
+                    break;
+                default:
+                    throw new InvalidOperationException($"Unsupported Operation: {value}");
+            }
+        }
+    }
     
     private int UserAnswer { get; set; }
 
@@ -25,7 +43,7 @@ internal class GameEngine
             Console.Clear();
             GetOperands();
             SetCorrectAnswer();
-            Console.WriteLine($"{Operand1} + {Operand2}");
+            DisplayEquation();
             GetUserAnswer();
             if (IsUserAnswerCorrect())
             {
@@ -110,7 +128,28 @@ internal class GameEngine
                 CorrectAnswer = Operand1 / Operand2;
                 break;
             default:
-                throw new ArgumentException("Argument Exception: Operation is invalid.");
+                throw new InvalidOperationException($"Unsupported operation: {Operation}");
+        }
+    }
+
+    private void DisplayEquation()
+    {
+        switch (Operation)
+        {
+            case '+':
+                Console.WriteLine($"{Operand1} + {Operand2}");
+                break;
+            case '-':
+                Console.WriteLine($"{Operand1} - {Operand2}");
+                break;
+            case '*':
+                Console.WriteLine($"{Operand1} * {Operand2}");
+                break;
+            case '/':
+                Console.WriteLine($"{Operand1} / {Operand2}");
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {Operation}");
         }
     }
 
