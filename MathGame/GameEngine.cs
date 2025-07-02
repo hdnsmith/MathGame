@@ -14,7 +14,7 @@ internal class GameEngine
     
     private int Operand2 { get; set; }
 
-    internal void PlayAddition()
+    internal int PlayAddition()
     {
         Score = 0;
         for (int i = 0; i < 5; i++)
@@ -29,6 +29,7 @@ internal class GameEngine
         Console.Clear();
         Console.Write($"Your final score was {Score}. Press enter to return to menu.");
         Console.ReadLine();
+        return Score;
     }
     
     internal static void PlaySubtraction()
