@@ -22,7 +22,7 @@ internal class Menu
         }
     }
     
-    internal List<string> RecentGames { get; set; } = new List<string>();
+    private List<string> RecentGames { get; set; } = new List<string>();
     
     internal static void DisplayMenu()
     {
