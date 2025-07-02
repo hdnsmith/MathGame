@@ -4,6 +4,8 @@ namespace MathGame;
 
 internal class GameEngine
 {
+    private char Operation { get; set; }
+    
     private int UserAnswer { get; set; }
 
     private int CorrectAnswer { get; set; }
@@ -16,12 +18,13 @@ internal class GameEngine
 
     internal int PlayAddition()
     {
+        Operation = '+';
         Score = 0;
         for (int i = 0; i < 5; i++)
         {
             Console.Clear();
             GetOperands();
-            SetCorrectAnswer('+');
+            SetCorrectAnswer();
             Console.WriteLine($"{Operand1} + {Operand2}");
             GetUserAnswer();
             if (IsUserAnswerCorrect())
@@ -44,12 +47,13 @@ internal class GameEngine
     
     internal int PlaySubtraction()
     {
+        Operation = '-';
         Score = 0;
         for (int i = 0; i < 5; i++)
         {
             Console.Clear();
             GetOperands();
-            SetCorrectAnswer('-');
+            SetCorrectAnswer();
             Console.WriteLine($"{Operand1} - {Operand2}");
             GetUserAnswer();
             if (IsUserAnswerCorrect())
@@ -89,9 +93,9 @@ internal class GameEngine
         Operand2 = random.Next(1, 101);
     }
 
-    private void SetCorrectAnswer(char operation)
+    private void SetCorrectAnswer()
     {
-        switch (operation)
+        switch (Operation)
         {
             case '+':
                 CorrectAnswer = Operand1 + Operand2;
