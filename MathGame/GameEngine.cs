@@ -24,7 +24,17 @@ internal class GameEngine
             SetCorrectAnswer('+');
             Console.WriteLine($"{Operand1} + {Operand2}");
             GetUserAnswer();
-            IsUserAnswerCorrect();
+            if (IsUserAnswerCorrect())
+            {
+                Console.WriteLine("Correct! Press enter to continue.");
+                Score++;
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"Sorry, the correct answer was {CorrectAnswer}. Press enter to continue.");
+                Console.ReadLine();
+            }
         }
         Console.Clear();
         Console.Write($"Your final score was {Score}. Press enter to return to menu.");
@@ -32,10 +42,32 @@ internal class GameEngine
         return Score;
     }
     
-    internal static void PlaySubtraction()
+    internal int PlaySubtraction()
     {
-        Console.WriteLine("Subtraction Game coming soon. Press enter to continue.");
+        Score = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Clear();
+            GetOperands();
+            SetCorrectAnswer('-');
+            Console.WriteLine($"{Operand1} - {Operand2}");
+            GetUserAnswer();
+            if (IsUserAnswerCorrect())
+            {
+                Console.WriteLine("Correct! Press enter to continue.");
+                Score++;
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"Sorry, the correct answer was {CorrectAnswer}. Press enter to continue.");
+                Console.ReadLine();
+            }
+        }
+        Console.Clear();
+        Console.Write($"Your final score was {Score}. Press enter to return to menu.");
         Console.ReadLine();
+        return Score;
     }
     
     internal static void PlayMultiplication()
@@ -82,25 +114,21 @@ internal class GameEngine
     {
         string? input;
         int output;
+        
         do
         {
             input = Console.ReadLine();
         } while (!int.TryParse(input, out output));
+        
         UserAnswer = output;
     }
 
-    private void IsUserAnswerCorrect()
+    private bool IsUserAnswerCorrect()
     {
         if (UserAnswer == CorrectAnswer)
         {
-            Console.WriteLine("Correct! Press enter to continue.");
-            Score++;
-            Console.ReadLine();
+            return true;
         }
-        else
-        {
-            Console.WriteLine($"Sorry, the correct answer was {CorrectAnswer}. Press enter to continue.");
-            Console.ReadLine();
-        }
+        return false;
     }
 }

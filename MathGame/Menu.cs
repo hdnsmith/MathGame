@@ -49,14 +49,16 @@ internal class Menu
     internal void PlaySelection()
     {
         GameEngine game = new GameEngine();
+        int score;
         switch (MenuSelection)
         {
             case 1:
-                int score = game.PlayAddition();
+                score = game.PlayAddition();
                 RecordGame('+', score);
                 break;
             case 2:
-                GameEngine.PlaySubtraction();
+                score = game.PlaySubtraction();
+                RecordGame('-', score);
                 break;
             case 3:
                 GameEngine.PlayMultiplication();
