@@ -13,7 +13,7 @@ class Program
             
             Menu.DisplayMenu();
             menu.MenuSelection = Menu.GetMenuSelection();
-            Menu.PlaySelection(menu.MenuSelection);
+            menu.PlaySelection();
         }
     }
 }

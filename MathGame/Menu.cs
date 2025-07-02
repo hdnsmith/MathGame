@@ -29,7 +29,7 @@ internal class Menu
         Console.WriteLine(
             "1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n5. View Previous Games\n6. Exit");
     }
-    public static int GetMenuSelection()
+    internal static int GetMenuSelection()
     {
         string? input = Console.ReadLine();
         if (int.TryParse(input, out int output))
@@ -42,9 +42,9 @@ internal class Menu
         }
     }
 
-    public static void PlaySelection(int menuSelection)
+    internal void PlaySelection()
     {
-        switch (menuSelection)
+        switch (_menuSelection)
         {
             case 1:
                 GameEngine.PlayAddition();
