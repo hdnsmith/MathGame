@@ -1,8 +1,8 @@
 ﻿namespace MathGame;
 
-class Program
+internal static class Program
 {
-    static void Main()
+    private static void Main()
     {
         Menu menu = new Menu();
         
