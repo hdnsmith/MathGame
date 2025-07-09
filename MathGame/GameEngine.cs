@@ -4,26 +4,8 @@ namespace MathGame;
 
 internal class GameEngine
 {
-    private char _operation;
-    internal char Operation
-    {
-        get => _operation;
-        set
-        {
-            switch (value)
-            {
-                case '+':
-                case '-':
-                case '*':
-                case '/':
-                    _operation = value;
-                    break;
-                default:
-                    throw new InvalidOperationException($"Unsupported Operation: {value}");
-            }
-        }
-    }
-    
+    internal Operation GameOperation { get; set; }
+
     private int UserAnswer { get; set; }
 
     private int CorrectAnswer { get; set; }
@@ -64,24 +46,24 @@ internal class GameEngine
     private void GetOperands()
     {
         Random random = new Random();
-        switch (Operation)
+        switch (GameOperation)
         {
-            case '+':
+            case Operation.Addition:
                 Operand1 = random.Next(1, 51);
                 Operand2 = random.Next(1, 51);
                 break;
-            case '-':
+            case Operation.Subtraction:
                 do
                 {
                     Operand1 = random.Next(1, 101);
                     Operand2 = random.Next(1, 101);
                 } while (Operand1 - Operand2 < 0);
                 break;
-            case '*':
+            case Operation.Multiplication:
                 Operand1 = random.Next(1, 13);
                 Operand2 = random.Next(1, 13);
                 break;
-            case '/':
+            case Operation.Division:
                 do
                 {
                     Operand1 = random.Next(1, 145);
@@ -93,43 +75,39 @@ internal class GameEngine
 
     private void SetCorrectAnswer()
     {
-        switch (Operation)
+        switch (GameOperation)
         {
-            case '+':
+            case Operation.Addition:
                 CorrectAnswer = Operand1 + Operand2;
                 break;
-            case '-':
+            case Operation.Subtraction:
                 CorrectAnswer = Operand1 - Operand2;
                 break;
-            case '*':
+            case Operation.Multiplication:
                 CorrectAnswer = Operand1 * Operand2;
                 break;
-            case '/':
+            case Operation.Division:
                 CorrectAnswer = Operand1 / Operand2;
                 break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {Operation}");
         }
     }
 
     private void DisplayEquation()
     {
-        switch (Operation)
+        switch (GameOperation)
         {
-            case '+':
+            case Operation.Addition:
                 Console.WriteLine($"{Operand1} + {Operand2}");
                 break;
-            case '-':
+            case Operation.Subtraction:
                 Console.WriteLine($"{Operand1} - {Operand2}");
                 break;
-            case '*':
+            case Operation.Multiplication:
                 Console.WriteLine($"{Operand1} * {Operand2}");
                 break;
-            case '/':
+            case Operation.Division:
                 Console.WriteLine($"{Operand1} / {Operand2}");
                 break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {Operation}");
         }
     }
 

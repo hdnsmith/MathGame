@@ -53,24 +53,24 @@ internal class Menu
         switch (MenuSelection)
         {
             case 1:
-                game.Operation = '+';
+                game.GameOperation = Operation.Addition;
                 score = game.PlayGame();
-                RecordGame(game.Operation, score);
+                RecordGame(game.GameOperation, score);
                 break;
             case 2:
-                game.Operation = '-';
+                game.GameOperation = Operation.Subtraction;
                 score = game.PlayGame();
-                RecordGame(game.Operation, score);
+                RecordGame(game.GameOperation, score);
                 break;
             case 3:
-                game.Operation = '*';
+                game.GameOperation = Operation.Multiplication;
                 score = game.PlayGame();
-                RecordGame(game.Operation, score);
+                RecordGame(game.GameOperation, score);
                 break;
             case 4:
-                game.Operation = '/';
+                game.GameOperation = Operation.Division;
                 score = game.PlayGame();
-                RecordGame(game.Operation, score);
+                RecordGame(game.GameOperation, score);
                 break;
             case 5:
                 DisplayGameHistory();
@@ -84,24 +84,22 @@ internal class Menu
         }
     }
 
-    private void RecordGame(char operation, int score)
+    private void RecordGame(Operation operation, int score)
     {
         switch (operation)
         {
-            case '+':
+            case Operation.Addition:
                 RecentGames.Add($"{DateTime.Now} - Addition - Score: {score}");
                 break;
-            case '-':
+            case Operation.Subtraction:
                 RecentGames.Add($"{DateTime.Now} - Subtraction - Score: {score}");
                 break;
-            case '*':
+            case Operation.Multiplication:
                 RecentGames.Add($"{DateTime.Now} - Multiplication - Score: {score}");
                 break;
-            case '/':
+            case Operation.Division:
                 RecentGames.Add($"{DateTime.Now} - Division - Score: {score}");
                 break;
-            default:
-                throw new ArgumentException("Argument Exception: Operation is invalid.");
         }
     }
 
