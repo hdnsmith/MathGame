@@ -6,3 +6,4 @@ riderModule.iml
 workspace.xml
 usage.statistics.xml
 *.DotSettings.user
+.vs/
